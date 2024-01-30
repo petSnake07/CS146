@@ -1,0 +1,44 @@
+import java.util.*;
+
+public class TwoNumbers {
+
+	private static HashMap<Integer, Integer> convert(int[] arr, int target) {
+		HashMap<Integer, Integer> map = new HashMap<Integer, Integer>();
+		
+		for (int num : arr) {
+			map.put(num, target - num);
+		}
+		
+		return map;
+	}
+	
+	public static boolean findPair(int target, int[] arr) {
+		HashMap<Integer, Integer> map = convert(arr, target);
+		int key = 0;
+		int value = 0;
+		boolean isFound = false;
+		
+		for (int num : arr) {
+			if (map.containsKey(target - num)) {
+				key = num;
+				value = target - key;
+				if (key != value) {
+					isFound = true;
+				}
+			}
+		}
+		System.out.println("Pair found? " + isFound);
+		if (isFound) {
+			System.out.println(key + ":" + value);
+		}
+		
+		return isFound;
+	}
+	
+	public static void main(String[] args) {
+		int[] array = {0, 1, 2, 3, 4, 5, 6, 7, 8, 9};
+		TwoNumbers.findPair(17, array); //true
+		TwoNumbers.findPair(18, array); //false
+		TwoNumbers.findPair(19, array); //false
+	}
+}

@@ -1,1 +1,6 @@
-
+findPair method converts (see convert helper method) an integer array into a hashmap, 
+with keys equal to the associated number in the array and values equal to the target - number at the key. 
+The method then checks each key to see if its value is also an existing key. 
+If found, the key and value are stored, and "isFound" is set to true.
+If not, the loop continues until one is found, or none work.
+In the end, the program prints "isFound". If true, it also prints the key-value pair. If false, it simply prints "false". 

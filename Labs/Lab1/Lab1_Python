@@ -1,1 +1,28 @@
+def convert(arr, target):
+    map = {}
+    for num in arr:
+        map[num] = target - num
+    return map
+
+def find_pair(target, arr):
+    map = convert(arr, target)
+    is_found = False
+    for num in arr:
+        if target - num in map:
+            key = num
+            value = target - key
+            if key != value:
+                is_found = True
+                break
+    print("Pair found?", is_found)
+    if is_found:
+        print(f"{key}:{value}")
+    return is_found
+
+if __name__ == "__main__":
+    array = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+    find_pair(17, array)
+    find_pair(18, array)
+    find_pair(19, array)
+
 

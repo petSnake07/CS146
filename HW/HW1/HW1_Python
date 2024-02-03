@@ -1,0 +1,34 @@
+import re
+
+def convert(to_convert):
+    converted = to_convert.lower()
+    return re.sub('[^0-9a-zA-Z]+', '', converted)
+
+def is_palindrome(string1, string2):
+    str1 = convert(string1)
+    str2 = convert(string2)
+    is_palindrome = True
+    
+    index = len(str2) - 1
+
+    if len(str1) == len(str2):
+        for letter in str1:
+            if letter != str2[index]:
+                is_palindrome = False
+                break
+            else:
+                index -= 1
+            
+        
+    else:
+        is_palindrome = False
+
+    return is_palindrome
+
+if __name__ == "__main__":
+    print(is_palindrome('Kayak', 'Kayak'))
+    print(is_palindrome('Kayak', 'Kayak!'))
+    print(is_palindrome('Kayak', 'K a y a k'))
+    print(is_palindrome('Kayak', 'Kay@k'))
+    print(is_palindrome('Kayak', 'Canoe'))
+            

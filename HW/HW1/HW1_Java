@@ -1,0 +1,45 @@
+public class Palindrome {
+	private String string;
+	
+	public Palindrome(String string) {
+		this.string = string;
+	}
+	
+	private String convert(String toConvert) {
+		String converted = toConvert.replaceAll("[^a-zA-Z0-9]", "");
+		return converted.toLowerCase();
+	}
+	
+	public boolean isPalindrome(String str) {
+		String str1 = convert(string);
+		String str2 = convert(str);
+		boolean isPalindrome = true;
+		
+		if (str1.length() == str2.length()) {
+			for (int i = 0; i < str1.length(); i++) {
+				if (str1.charAt(i) != str2.charAt(str2.length() - i - 1)) {
+					isPalindrome = false;
+				}
+			}
+		}
+		
+		else {
+			isPalindrome = false;
+		}
+		
+		return isPalindrome;
+		
+	}
+	
+	public static void main(String[] args) {
+		Palindrome test1 = new Palindrome("Kayak");
+		System.out.println(test1.isPalindrome("Kayak"));
+		System.out.println(test1.isPalindrome("Kayak!"));
+		System.out.println(test1.isPalindrome("K a y a k"));
+		System.out.println(test1.isPalindrome("Kay@k"));
+		System.out.println(test1.isPalindrome("Canoe"));
+		
+		
+	}
+
+}

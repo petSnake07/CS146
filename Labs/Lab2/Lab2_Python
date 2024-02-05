@@ -1,0 +1,24 @@
+from collections import Counter
+
+class Anagram:
+    def __init__(self, s):
+        self.string = list(s)
+    
+    def string_converter(self, s):
+        return list(s)
+    
+    def is_anagram(self, s):
+        target = self.string_converter(s)
+        string_counter = Counter(self.string)
+        target_counter = Counter(target)
+        
+        return string_counter == target_counter
+
+if __name__ == "__main__":
+    test1 = Anagram("fired")
+    print(test1.is_anagram("fried"))
+    test2 = Anagram("late")
+    print(test2.is_anagram("latte"))
+    test3 = Anagram("wrong")
+    print(test3.is_anagram("right"))
+

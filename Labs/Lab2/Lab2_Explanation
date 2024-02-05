@@ -1,0 +1,5 @@
+The isAnagram method takes two input Strings and converts them into a list of letters (see stringConverter method).
+Using a while-loop, the loop takes the "i" index of the a list and checks if the other list contains the element. 
+If yes, the method removes those letters from each list and checks the next letter. 
+If no, "i" increments so the next element can be checked. 
+The method returns true if both lists have 0 elements. Otherwise, it returns false. 

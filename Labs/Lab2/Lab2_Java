@@ -1,0 +1,56 @@
+package Anagram;
+
+import java.util.*;
+
+public class Anagram {
+  private List<String> string;
+
+  public Anagram(String s) {
+      string = new ArrayList<String>();
+      String[] temp = s.split("");
+      for (String letter : temp) {
+          string.add(letter);
+      }
+  }
+
+  private List<String> stringConverter(String s) {
+      List<String> list = new ArrayList<String>();
+      String[] temp = s.split("");
+      for (String letter : temp) {
+          list.add(letter);
+      }
+
+      return list;
+  }
+ 
+  public boolean isAnagram(String s) {
+      List<String> target = stringConverter(s);
+      int i = 0;
+     
+      while (i < target.size()) {
+          if (string.contains(target.get(i))) {
+              string.remove(target.remove(i));
+          }
+          else {
+              i++;
+          }
+      }
+
+      if ((string.size() == 0) && (target.size() == 0)) {
+          return true;
+      }
+      return false;
+  }
+
+  public static void main(String[] args) {
+      Anagram test1 = new Anagram("fired");
+      System.out.println(test1.isAnagram("fried"));
+
+      Anagram test2 = new Anagram("late");
+      System.out.println(test2.isAnagram("latte"));
+
+      Anagram test3 = new Anagram("wrong");
+      System.out.println(test3.isAnagram("right"));
+  }
+}
+

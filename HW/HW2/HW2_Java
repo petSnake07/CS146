@@ -1,0 +1,51 @@
+package Versions;
+
+public class VersionChecker {
+	
+	// use binary search to find bad version 
+	private static boolean isBadVersion(boolean version) {
+		return version; 
+	}
+	
+	// returns index of the first bad version
+	public static int findBadVersion(boolean[] versions, int max, int min) {
+		int mid = ((max + min) / 2);
+		
+		if (mid == versions.length) { // edge case: all is well 
+			return -1;
+		}
+		
+		else if (mid == 0) { // edge case: first version is bad 
+			return mid;
+		}
+		
+		else if (!versions[mid] && versions[mid - 1]) { // mid = F, mid - 1 = T
+			return mid;
+		}
+		
+		else if (!isBadVersion(versions[mid])) {
+			return findBadVersion(versions, mid, 0);
+		}
+		
+		else {
+			return findBadVersion(versions, max, mid + 1);
+		}
+	}
+	
+	public static void main(String[] args) {
+		boolean[] test1 = {true, true, true, true, false}; // 4
+		System.out.println(findBadVersion(test1, test1.length, 0));
+		
+		boolean[] test2 = {true, true, true, false, false, false}; // 3
+		System.out.println(findBadVersion(test2, test2.length, 0));
+		
+		boolean[] test3 = {true, false, false, false, false}; // 1
+		System.out.println(findBadVersion(test3, test3.length, 0));
+		
+		boolean[] test4 = {false, false, false, false, false}; // 0
+		System.out.println(findBadVersion(test4, test4.length, 0));
+		
+		boolean[] test5 = {true, true, true, true, true, true}; // none
+		System.out.println(findBadVersion(test5, test5.length, 0));
+	}
+}

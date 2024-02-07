@@ -1,0 +1,37 @@
+class version_checker:
+    def is_bad_version(self, version):
+        return version
+    
+    def find_bad_version(self, versions, max, min):
+        mid = (max + min) // 2
+
+        if mid == len(versions):
+            return -1
+        
+        if mid == 0:
+            return mid
+        
+        if (versions[mid] == False) and (versions[mid - 1] == True):
+            return mid
+        
+        if self.is_bad_version(versions[mid]) == False:
+            return self.find_bad_version(versions, mid, 0)
+        
+        else:
+            return self.find_bad_version(versions, max, mid + 1)
+        
+if __name__ == "__main__":
+    test1 = [True, True, True, True, False]
+    print(version_checker().find_bad_version(test1, len(test1), 0))
+
+    test2 = [True, True, True, False, False, False]
+    print(version_checker().find_bad_version(test2, len(test2), 0))
+
+    test3 = [True, False, False, False, False]
+    print(version_checker().find_bad_version(test3, len(test3), 0))
+
+    test4 = [False, False, False, False, False]
+    print(version_checker().find_bad_version(test4, len(test4), 0))
+
+    test5 = [True, True, True, True, True, True]
+    print(version_checker().find_bad_version(test5, len(test5), 0))

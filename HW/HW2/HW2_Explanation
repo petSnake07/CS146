@@ -1,0 +1,8 @@
+It's basically a typical recursive binary search method* (using binary search minimizes the calls to isBadVersion), 
+except I added an if-statement at the beginning to check if "mid" is False and "mid - 1" is True. 
+This True-False pair ensures that the program will return the index of the first bad version. 
+I also included some edge cases, such as if all the versions are bad or all the versions are good.
+
+*The recursive binary search method checks the midpoint. If the midpoint is False, it recursively calls itself to check
+the lower half of the array. If True, it recursively calls itself to check the upper half of the array. It continues until
+it finds a match. 

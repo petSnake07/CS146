@@ -1,0 +1,19 @@
+MATRIX_MULTIPLY(A, B):                                           1 time
+  if columns(A) ≠ rows(B):                                       1 time
+    raise ValueError("Matrix multiplication is not defined.")    1 time
+
+  rows_A ← number of rows in A                                   1 time
+  cols_A ← number of columns in A                                1 time
+  cols_B ← number of columns in B                                1 time
+  result ← matrix of size rows_A x cols_B filled with zeros      1 time
+
+  for i from 1 to rows_A do:                                     rows_A+1 times 
+    for j from 1 to cols_B do:                                   rows_A(cols_B+1) times 
+    sum ← 0                                                      rows_A(cols_B) times 
+    for k from 1 to cols_A do:                                   rows_A(cols_B)(cols_A+1) times 
+      sum ← sum + A[i][k] * B[k][j]                              rows_A(cols_B)(cols_A) times
+    result[i][j] ← sum return result                             1 time 
+
+= 1 + 1 + 1 + 1 + 1 + 1 + 1 + rows_A + 1 + rows_A(cols_B + 1) + rows_A(cols_B) + rows_A(cols_B)(cols_A + 1) + rows_A(cols_B)(cols_A) + 1
+= 9 + 2(rows_A) + 2(rows_A)(rows_B) + rows_A(cols_B) + 2(rows_A)(cols_B)(cols_A) 
+Time complexity = O(rows_A * cols_B * cols_A) 

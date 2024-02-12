@@ -1,0 +1,12 @@
+isPrime(n): 
+  for(i = 2, i*i <= n; i++) {      <-- 2^k 
+    if(n % x == 0) {
+      return false
+    }
+  return true
+
+Let i > n, i = 2^k, so 2^k > n, k > log2(n)
+
+1. Best Case: 
+
+Time complexity: 

@@ -1,43 +1,19 @@
 10000000000n^2 vs n^3
-10000000000n^2:
-- O(n^2)
-- Omega(n^2)
-- Theta(n^2)
-n^3:
-- O(n^3)
-- Omega(n^3)
-- Theta(n^3)
+10000000000n^2: degree of n^2
+n^3: degree of n^3
 Therefore, n^3 > 10000000000n^2
 
 n^2 log(n) vs n(log(n))^10
-n^2 log(n):
-- O(n^2 log(n))
-- Omega(n^2 log(n))
-- Theta(n^2 log(n))
-n(log(n))^10:
-- O(n(log(n))^10)
-- Omega(n(log(n))^10)
-- Theta(n(log(n))^10)
-Therefore, n(log(n))^10 > n^2 log(n)
+n^2 log(n) = 2log(n) + log(logn) = 2log(n): degree of 2logn
+n(log(n))^10 = logn + 10log(logn) = log(n): degree of logn
+Therefore, n^2 log(n) > n(log(n))^10
 
 n^logn vs 2^(sqrt(n))
-n^logn:
-- O(n^logn)
-- Omega(n^logn)
-- Theta(n^logn)
-2^(sqrt(n)):
-- O(2^(sqrt(n)))
-- Omega(2^(sqrt(n)))
-- Theta(2^(sqrt(n)))
-Therefore, n^logn > 2^(sqrt(n))
+n^logn = logn(logn) = log((logn)^2) = 2 log(logn): degree of 2log(logn)
+2^(sqrt(n)) = sqrt(n)log2 = log(sqrt(n) * log2) = log(sqrt(n)) + log(log2): degree of 1/2log(n) 
+Therefore, 2^(sqrt(n)) > n^logn
  
 2^n vs 2^(2n)
-2^n:
-- O(2^n)
-- Omega(2^n)
-- Theta(2^n)
-2^(2n):
-- O(2^(2n))
-- Omega(2^(2n))
-- Theta(2^(2n))
+2^n = n log2: degree of n log2
+2^(2n) 2n log2: degree of 2n log2
 Thefore, 2^(2n) > 2^n

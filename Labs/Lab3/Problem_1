@@ -1,0 +1,43 @@
+10000000000n^2 vs n^3
+10000000000n^2:
+- O(n^2)
+- Omega(n^2)
+- Theta(n^2)
+n^3:
+- O(n^3)
+- Omega(n^3)
+- Theta(n^3)
+Therefore, n^3 > 10000000000n^2
+
+n^2 log(n) vs n(log(n))^10
+n^2 log(n):
+- O(n^2 log(n))
+- Omega(n^2 log(n))
+- Theta(n^2 log(n))
+n(log(n))^10:
+- O(n(log(n))^10)
+- Omega(n(log(n))^10)
+- Theta(n(log(n))^10)
+Therefore, n(log(n))^10 > n^2 log(n)
+
+n^logn vs 2^(sqrt(n))
+n^logn:
+- O(n^logn)
+- Omega(n^logn)
+- Theta(n^logn)
+2^(sqrt(n)):
+- O(2^(sqrt(n)))
+- Omega(2^(sqrt(n)))
+- Theta(2^(sqrt(n)))
+Therefore, n^logn > 2^(sqrt(n))
+ 
+2^n vs 2^(2n)
+2^n:
+- O(2^n)
+- Omega(2^n)
+- Theta(2^n)
+2^(2n):
+- O(2^(2n))
+- Omega(2^(2n))
+- Theta(2^(2n))
+Thefore, 2^(2n) > 2^n

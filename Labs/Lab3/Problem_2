@@ -5,8 +5,10 @@ isPrime(n):
     }
   return true
 
-Let i > n, i = 2^k, so 2^k > n, k > log2(n)
+Let i*i = n, i^2 = n, i = sqrt(n)
 
-1. Best Case: 
+1. Best Case: Even number, so O(1) 
+2. Worst Case: Number is prime, so O(sqrt(n))
+3. Average Case: O(sqrt(n))
 
-Time complexity: 
+Time complexity: O(sqrt(n))

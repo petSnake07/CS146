@@ -1,0 +1,32 @@
+import java.util.*;
+
+public class Fibonacci {
+	private static HashMap<Integer, Integer> fibValues = new HashMap<Integer, Integer>();
+	
+	public static int fibonacci(int n) {
+		if (fibValues.containsKey(n)) {
+			return fibValues.get(n);
+		}
+		
+		if (n == 0) {
+			return 0;
+		}
+		
+		if (n == 1) {
+			return 1;
+		}
+		
+		int fibValue = fibonacci(n - 1) + fibonacci(n - 2);
+		
+		fibValues.put(n, fibValue);
+		
+		return fibValue;
+	}
+
+	public static void main(String[] args) {
+		for (int i = 0; i < 10; i++) {
+			System.out.print(fibonacci(i) + " ");
+		}
+		
+	}
+}

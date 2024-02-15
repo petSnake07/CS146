@@ -1,0 +1,15 @@
+def fibonacci(n, fib_values={}):
+    if n in fib_values:
+        return fib_values[n]
+    if n == 0:
+        return 0
+    if n == 1:
+        return 1
+    fib_value = fibonacci(n - 1, fib_values) + fibonacci(n - 2, fib_values)
+    fib_values[n] = fib_value
+    return fib_value
+
+if __name__ == "__main__":
+    for i in range(10):
+        print(fibonacci(i), end=" ")
+

@@ -1,0 +1,18 @@
+yetAnotherFunc(n):           T(n)
+  if n > 1:                  c1
+    for(i=0;i<10n;i++)       10n + 1 times 
+      doSomething;           10n times 
+    yetAnotherFunc(n/2);     T(n/2)
+    yetAnotherFunc(n/2);     T(n/2) 
+
+Sum of the costs: T(n) = c1 + 20n + 1 + 2T(n/2) 
+Substitute "c1 + 20n + 1" with N (same degree) 
+T(n) = 2T(n/2) + N 
+
+Using the Master Theorem: 
+a = 2, b = 2, F(n) = N
+
+Compare n^log2(2) with N:
+N vs. N, so both are equal 
+
+Therefore, the time complexity is Theta(n logn) 

@@ -13,6 +13,6 @@ Using the Master Theorem:
 a = 2, b = 2, F(n) = N
 
 Compare n^log2(2) with N:
-N vs. N, so both are equal 
+N vs. N, so both are of the same order 
 
 Therefore, the time complexity is Theta(n logn) 

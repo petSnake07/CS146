@@ -1,0 +1,8 @@
+The method sorts the array to make the process easier and reduce time complexity. It uses three pointers: 
+index i, the start of the array, index j, the element after i, and index k, the pointer at the end of the array.
+Using while-loops to compare the current (i, j, or k) element with the previous (i-1, j-1, or k-1) to ensure no duplicate
+elements are used, the method cycles through the array, *incrementing j or decrementing k until a triplet sum of 0 is found.
+These triplets are added to the resulting list. 
+
+*The incrementing of j or decrementing of k depends on the sum. If the sum is negative, then j must be too large, 
+so it increments. If it is positive, then k must be too large, so k decrements. 

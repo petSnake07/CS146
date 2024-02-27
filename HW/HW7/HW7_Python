@@ -1,0 +1,24 @@
+from typing import List
+
+class MeetingTimes:
+    def minMeetingRooms(self, intervals: List[List[int]]) -> int:  
+        start_times = sorted([interval[0] for interval in intervals])
+        end_times = sorted([interval[1] for interval in intervals])
+
+        rooms_needed = 0
+        end_index = 0
+
+        for i in range(len(intervals)):
+            if start_times[i] < end_times[end_index]:
+                rooms_needed += 1
+            else:
+                end_index += 1
+            
+        return rooms_needed
+    
+if __name__ == "__main__":
+    test = MeetingTimes()
+    intervals1 = [[0,30],[5,10],[15,20]]
+    intervals2 = [[0,1],[1,2],[2,3]]
+    print(test.minMeetingRooms(intervals1))
+    print(test.minMeetingRooms(intervals2))

@@ -1,0 +1,5 @@
+The minMeetingRooms method first creates sorted arrays of the start and end times. It will then iterate through the list 
+of start times, and compare each time with the current end time. If the start time is less than the end time, it means that 
+there is currently a meeting in progress and another room is needed (roomsNeeded++). If the start time is greater than or 
+equal to the end time, however, it means that there are no meetings in progress (and the end-time index will be incremented). 
+Finally, the method returns the final value of roomsNeeded. 

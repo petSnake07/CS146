@@ -1,0 +1,30 @@
+class PalindromeLength:
+    def longestPalindrome(self, s):
+        counts = {}
+        for letter in s:
+            counts[letter] = counts.get(letter, 0) + 1
+        palindromeLength = 0
+        hasOddCount = False
+        for count in counts.values():
+            if count % 2 == 0:
+                palindromeLength += count
+            else:
+                palindromeLength += count - 1
+                hasOddCount = True
+        if hasOddCount:
+            palindromeLength += 1
+        return palindromeLength
+
+if __name__ == "__main__":
+    test = PalindromeLength()
+    s1 = "abccccdd"
+    s2 = "speediskey"
+    s3 = "Aa"
+    s4 = "racecar"
+    s5 = "eeeeee"
+    print(test.longestPalindrome(s1))
+    print(test.longestPalindrome(s2))
+    print(test.longestPalindrome(s3))
+    print(test.longestPalindrome(s4))
+    print(test.longestPalindrome(s5))
+

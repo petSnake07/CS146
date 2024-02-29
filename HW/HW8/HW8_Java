@@ -1,0 +1,48 @@
+import java.util.HashMap;
+
+public class PalindromeLength {
+    public int longestPalindrome(String s) {
+        HashMap<Character, Integer> counts = new HashMap<>();
+        
+        for (char letter : s.toCharArray()) {
+            counts.put(letter, counts.getOrDefault(letter, 0) + 1);
+        }
+        
+        int palindromeLength = 0;
+        boolean hasOddCount = false; 
+
+        for (int count : counts.values()) {
+            if (count % 2 == 0) {
+                palindromeLength += count;
+            } 
+            
+            else {
+                palindromeLength += count - 1;
+                hasOddCount = true;
+            }
+        }
+        
+        if (hasOddCount) {
+            palindromeLength++;
+        }
+
+        return palindromeLength;
+    }
+    
+    public static void main(String[] args) {
+        PalindromeLength test = new PalindromeLength();
+        
+        String s1 = "abccccdd";
+        String s2 = "speediskey";
+        String s3 = "Aa";
+        String s4 = "racecar";
+        String s5 = "eeeeee";
+        
+        System.out.println(test.longestPalindrome(s1));  // Output: 7
+        System.out.println(test.longestPalindrome(s2));  // Output: 5
+        System.out.println(test.longestPalindrome(s3));  // Output: 1
+        System.out.println(test.longestPalindrome(s4));  // Output: 7
+        System.out.println(test.longestPalindrome(s5));  // Output: 6
+    }
+
+}

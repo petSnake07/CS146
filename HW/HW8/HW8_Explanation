@@ -1,0 +1,6 @@
+The program converts the input string into a character array, then uses a HashMap to count the number of occurences of 
+each unique character. Then, the program iterates through the HashMap, adding every even value of each key
+(pairs of letters--one at the left and one at the right of the palindrome) and adding every odd value of each key minus 1 
+(value of 3 = 2 letters or 1 pair, value of 5 = 4 letters or 2 pairs, etc.; if the value is 1, the loop simply adds 0 to
+the resulting value) to the return value. If the input string length is odd, one of the letters not in a pair can be used as
+the center of the palindrome, and adds 1 to the return value. Finally, the program returns the resulting palindrome length. 

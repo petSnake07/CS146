@@ -1,0 +1,33 @@
+package CommonAncestor;
+
+public class CommonAncestor {
+	   public TreeNode lowestCommonAncestor(TreeNode root, TreeNode p, TreeNode q) {
+	        if (root == null) {
+	            return null;
+	        }
+
+	        if (p.val < root.val && q.val < root.val) {
+	            return lowestCommonAncestor(root.left, p, q);
+	        }
+
+	        else if (p.val > root.val && q.val > root.val) {
+	            return lowestCommonAncestor(root.right, p, q);
+	        }
+
+	        else {
+	            return root;
+	        }
+	    }
+    
+    public static void main(String[] args) {
+    	TreeNode node1 = new TreeNode(1);
+    	TreeNode node5 = new TreeNode(5);
+    	TreeNode node9 = new TreeNode(9);
+    	TreeNode node3 = new TreeNode(3, node1, null);
+    	TreeNode node8 = new TreeNode(8, node5, node9);
+    	TreeNode node4 = new TreeNode(4, node3, node8);
+    	
+    	CommonAncestor test = new CommonAncestor();
+    	System.out.println(test.lowestCommonAncestor(node4, node1, node5).val);
+    }
+}

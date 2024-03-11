@@ -1,0 +1,4 @@
+The lowestCommonAncestor method uses the binary search tree property of the left and right child being less than and greater 
+than the parent, respectively. By recursively comparing the values of the targets and the parent to see if both values are less
+than or greater than the parent, it determines if both targets are in the same subtree. Once one target is less than the parent 
+and the other greater, it indicates it has found the least common ancestor and returns the root. 

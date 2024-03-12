@@ -1,0 +1,31 @@
+class TreeNode(object):
+
+     def __init__(self, val=0, left=None, right=None):
+
+         self.val = val
+
+         self.left = left
+
+         self.right = right
+
+class CommonAncestor:
+    def lowestCommonAncestor(self, root, p, q):
+        if root is None:
+            return None
+        if p.val < root.val and q.val < root.val:
+            return self.lowestCommonAncestor(root.left, p, q)
+        elif p.val > root.val and q.val > root.val:
+            return self.lowestCommonAncestor(root.right, p, q)
+        else:
+            return root
+
+if __name__ == "__main__":
+    node1 = TreeNode(1)
+    node5 = TreeNode(5)
+    node9 = TreeNode(9)
+    node3 = TreeNode(3, node1)
+    node8 = TreeNode(8, node5, node9)
+    node4 = TreeNode(4, node3, node8)
+    test = CommonAncestor()
+    print(test.lowestCommonAncestor(node4, node1, node5).val)
+

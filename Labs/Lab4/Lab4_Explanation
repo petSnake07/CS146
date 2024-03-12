@@ -1,0 +1,3 @@
+The method recursively swaps the root's children. Its base case checks to see if the current root is null. If not, it makes 
+recursive calls to itself, setting the left child as a root and the right child as a root in another call, swapping them if 
+possible. This repeats throughout each subtree until the entire tree is inverted. 

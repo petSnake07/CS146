@@ -1,0 +1,21 @@
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class ValidTree:
+    def isValidBST(self, root):
+        return self.isValidBST_helper(root, None, None)
+    
+    def isValidBST_helper(self, root, min_value, max_value):
+        if root is None:
+            return True
+        
+        if root.val < max_value:
+            return self.isValidBST_helper(root.left, min_value, root.val)
+        
+        if root.val > min_value:
+            return self.isValidBST_helper(root.right, root.val, max_value)
+        
+        return False

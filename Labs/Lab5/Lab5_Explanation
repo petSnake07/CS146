@@ -1,0 +1,5 @@
+The isValidBST method uses a helper method requiring the root of the subtree, the maxmimum bound, and the minimum bound. 
+This method recursively checks to see if the current node is less than the parent if it is a left child, or greater than 
+the parent if it is a right child. The min and max values are updated based on the child's placement (left or right child)
+and the current value of the subtree root. Finally, once the method reaches the end of a subtree (as indicated by a null root),
+it returns true, indicating there were no issues. Otherwise, it returns false. 

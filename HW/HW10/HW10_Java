@@ -1,0 +1,61 @@
+import java.util.*;
+
+public class LevelOrderTraversal {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        Queue<TreeNode> tempNodeList = new LinkedList<>();
+        List<List<Integer>> nodeList = new ArrayList<List<Integer>>();
+        
+        if (root == null) {
+        	return nodeList;
+        }
+        
+        tempNodeList.add(root);
+        
+        while (!tempNodeList.isEmpty()) { 					// indicator for end of tree
+        	int levelSize = tempNodeList.size();			
+        	List<Integer> levelList = new ArrayList<>();	
+        	
+        	for (int i = 0; i < levelSize; i++) {			// keeps track of current level
+        		TreeNode current = tempNodeList.remove();	// first node in queue
+        	
+        		if (current.left != null) {					// left child
+        			tempNodeList.add(current.left);
+        		}
+        	
+        		if (current.right != null) {				// right child 
+        			tempNodeList.add(current.right);
+        		}
+        	
+        		levelList.add(current.val);					// add to the level list after checking for children
+        	}
+        	
+        	nodeList.add(levelList);						// LEVEL CLEARED 
+        }
+        
+        return nodeList;
+
+     }
+    
+    // print final list 
+    public static void print(List<List<Integer>> toPrint) {
+    	for (List<Integer> level : toPrint) {
+    		for (Integer value : level) {
+    			System.out.print(value + " ");
+    		}
+    		System.out.println();
+    	}
+    }
+    
+    public static void main(String[] args) {
+        LevelOrderTraversal test = new LevelOrderTraversal();
+
+        TreeNode root = new TreeNode(4);
+        root.left = new TreeNode(3);
+        root.right = new TreeNode(8);
+        root.left.left = new TreeNode(1);
+        root.left.right = new TreeNode(5);
+        root.right.right = new TreeNode(9);
+        print(test.levelOrder(root));
+
+    }
+}

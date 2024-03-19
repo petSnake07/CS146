@@ -1,0 +1,5 @@
+Uses the BFS traversal method. 
+
+Create a queue and add the root. While the queue is not empty, add the current node's children to the back of the queue,
+and its value to the level list. Keep track of the current level using a for-loop. Move on to the next node in the queue. 
+Repeat until there are no longer any nodes in the queue. Return the final list of lists. 

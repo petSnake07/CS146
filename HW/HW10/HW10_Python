@@ -1,0 +1,49 @@
+from typing import List, Optional
+from collections import deque
+
+class TreeNode(object):
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class LevelOrderTraversal:
+    def levelOrder(self, root: Optional[TreeNode]) -> List[List[int]]:
+        if not root:
+            return []
+        
+        final_list = []
+        queue = deque([root])
+
+        while queue:
+            level_size = len(queue)
+            level_list = []
+
+            for _ in range(level_size):
+                curr_node = queue.popleft()  
+                level_list.append(curr_node.val)
+
+                if curr_node.left: 
+                    queue.append(curr_node.left)
+
+                if curr_node.right: 
+                    queue.append(curr_node.right)
+                
+            final_list.append(level_list)
+        
+        return final_list
+
+    def print_tree(self, tree):  
+        for level in tree:
+            print(level)
+
+test = LevelOrderTraversal()
+
+root1 = TreeNode(4)
+root1.left = TreeNode(3)
+root1.right = TreeNode(8)
+root1.left.left = TreeNode(1)
+root1.left.right = TreeNode(5)
+root1.right.right = TreeNode(9)
+tree = test.levelOrder(root1)
+test.print_tree(tree)

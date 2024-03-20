@@ -1,0 +1,30 @@
+class FloodFill:
+    def floodFill(self, image, sr, sc, color):
+        original_color = image[sr][sc]
+        self.floodFill_helper(image, sr, sc, color, original_color)
+        return image
+
+    def floodFill_helper(self, image, sr, sc, color, original_color):
+        if sr < 0 or sr >= len(image) or sc < 0 or sc >= len(image[0]):
+            return
+        if image[sr][sc] is not original_color:
+            return
+        
+        image[sr][sc] = color
+        
+        self.floodFill_helper(image, sr - 1, sc, color, original_color)
+        self.floodFill_helper(image, sr + 1, sc, color, original_color)
+        self.floodFill_helper(image, sr, sc - 1, color, original_color)
+        self.floodFill_helper(image, sr, sc + 1, color, original_color)
+
+def print_image(image):
+    for row in image:
+        for col in row:
+            print(col, end=" ")
+        print()
+
+if __name__ == "__main__":
+    test = FloodFill()
+    image1 = [[1,1,1], [1,1,0], [1,0,1]]
+    print_image(test.floodFill(image1, 1, 1, 2))
+

@@ -1,0 +1,3 @@
+Method takes note of the original color and uses a helper method to flood fill the image (and returns the updated image). 
+The helper method checks to see if (1) the pixel is out of bounds and (2) the pixel color does not match the original color. 
+If the pixel passes these checks, the color is updated and the method calls itself for the pixel above, below, left, and right. 

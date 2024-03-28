@@ -1,0 +1,34 @@
+class Prerequisites:
+    def canFinish(self, numCourses, prerequisites):
+        graph = [[] for _ in range(numCourses)]
+        indegree = [0] * numCourses
+        for prereq in prerequisites:
+            course = prereq[0]
+            prereqCourse = prereq[1]
+            graph[prereqCourse].append(course)
+            indegree[course] += 1
+        
+        queue = []
+        for i in range(numCourses):
+            if indegree[i] == 0:
+                queue.append(i)
+        
+        count = 0
+        while queue:
+            course = queue.pop(0)
+            count += 1
+            for nextNode in graph[course]:
+                indegree[nextNode] -= 1
+                if indegree[nextNode] == 0:
+                    queue.append(nextNode)
+        
+        return count == numCourses
+
+test = Prerequisites()
+numCourses1 = 2
+prerequisites1 = [[1, 0]]
+print(test.canFinish(numCourses1, prerequisites1))
+numCourses2 = 2
+prerequisites2 = [[1, 0], [0, 1]]
+print(test.canFinish(numCourses2, prerequisites2))
+

@@ -1,0 +1,4 @@
+Classes can only be completed as long as there are no cycles in the graph. First, we convert the prequisite matrix into 
+a graph (an adjacency list, in this case). Then, we run topological sort (Kahn's algorithm) to check if the courses
+can be completed or not. Using a counter, check if the number of processed classes matches the total number of classes.
+If so, the courses can indeed be completed. If not, that means there is a cycle in the graph, and thus, cannot be completed. 

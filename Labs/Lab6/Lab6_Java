@@ -1,0 +1,66 @@
+package TopologicalSort;
+
+import java.util.*;
+
+public class Prerequisites {
+    public boolean canFinish(int numCourses, int[][] prerequisites) {
+        // convert to graph
+    	List<List<Integer>> graph = new ArrayList<>();
+        
+        int[] indegree = new int[numCourses]; 
+        
+        for (int i = 0; i < numCourses; i++) {
+            graph.add(new ArrayList<>());
+            
+        }
+        
+        for (int[] prereq : prerequisites) {
+            int course = prereq[0];
+            
+            int prereqCourse = prereq[1];
+            
+            graph.get(prereqCourse).add(course);
+            
+            indegree[course]++;
+        }
+
+        // Kahn's algorithm 
+        Queue<Integer> queue = new LinkedList<>();
+        
+        for (int i = 0; i < numCourses; i++) {
+            if (indegree[i] == 0) {
+                queue.offer(i);
+                
+            }
+        }
+
+        int count = 0; 
+        
+        while (!queue.isEmpty()) {
+            int course = queue.poll();
+            
+            count++;
+            
+            for (int nextNode : graph.get(course)) {
+            	indegree[nextNode]--;
+            	
+                if (indegree[nextNode] == 0) {
+                    queue.offer(nextNode);
+                }
+            }
+        }
+        
+        return count == numCourses; 
+    }
+
+    public static void main(String[] args) {
+        Prerequisites test = new Prerequisites();
+        int numCourses1 = 2;
+        int[][] prerequisites1 = {{1, 0}};
+        System.out.println(test.canFinish(numCourses1, prerequisites1)); // Output: true
+
+        int numCourses2 = 2;
+        int[][] prerequisites2 = {{1, 0}, {0, 1}};
+        System.out.println(test.canFinish(numCourses2, prerequisites2)); // Output: false
+    }
+}

@@ -1,0 +1,82 @@
+package Cities;
+
+public class Cities {
+    public int findTheCity(int n, int[][] edges, int distanceThreshold) {
+        // floyd warshall
+        int[][] dist = new int[n][n];
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < n; j++) {
+            	if (i == j) {
+            		dist[i][j] = 0;
+            	}
+            	
+            	else {
+            		dist[i][j] = Integer.MAX_VALUE;
+            	}
+            }
+        }
+
+        for (int[] edge : edges) {
+            int from = edge[0];
+            int to = edge[1];
+            int weight = edge[2];
+            dist[from][to] = weight;
+            dist[to][from] = weight; 
+        }
+
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                for (int j = 0; j < n; j++) {
+                    if (dist[i][k] != Integer.MAX_VALUE && dist[k][j] != Integer.MAX_VALUE &&
+                            dist[i][j] > dist[i][k] + dist[k][j]) {
+                        dist[i][j] = dist[i][k] + dist[k][j];
+                    }
+                }
+            }
+        }
+
+        // city finding
+        int minNeighbors = Integer.MAX_VALUE;
+        int cityNum = -1;
+        for (int i = 0; i < n; i++) {
+            int neighborCount = 0;
+            for (int j = 0; j < n; j++) {
+                if (i != j && dist[i][j] <= distanceThreshold) {
+                    neighborCount++;
+                }
+            }
+            if (neighborCount < minNeighbors || (neighborCount == minNeighbors && i > cityNum)) {
+                minNeighbors = neighborCount;
+                cityNum = i;
+            }
+        }
+
+        return cityNum;
+    }
+
+//    // just for debugging 
+//    public void printDist(int[][] dist) {
+//        for (int i = 0; i < dist.length; i++) {
+//            for (int j = 0; j < dist[i].length; j++) {
+//                System.out.print(dist[i][j] + " ");
+//            }
+//            System.out.println();
+//        }
+//    }
+
+    public static void main(String[] args) {
+        Cities test = new Cities();
+        int n = 4;
+        int[][] edges = {{0, 1, 3}, {1, 2, 1}, {1, 3, 4}, {2, 3, 1}};
+        int distanceThreshold = 4;
+
+        System.out.println(test.findTheCity(n, edges, distanceThreshold));
+
+        int n2 = 5;
+        int[][] edges2 = {{0, 1, 2}, {0, 4, 8}, {1, 2, 3}, {1, 4, 2}, {2, 3, 1}, {3, 4, 1}};
+        int distanceThreshold2 = 2;
+
+        System.out.println(test.findTheCity(n2, edges2, distanceThreshold2));
+    }
+}

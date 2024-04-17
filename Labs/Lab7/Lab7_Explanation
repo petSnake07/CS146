@@ -1,1 +1,8 @@
-The findTheCity method uses Floyd-Warshall's algorithm to create a table of edges for each city. 
+The findTheCity method uses Floyd-Warshall's algorithm(*) to create a table of edges for each city. Using the table, 
+nested for-loops iterate through cities, keeping track of the number of neighbors they have, the city with the least
+number of neighbors and greatest city #, and its neighbor count. Finally, the method returns the city num with the 
+minimum number of neighbors. 
+
+(*) The Floyd-Warshall algorithm in this method creates a table and fills it with the max integer or 0, if the city leads
+to itself. Then, it fills in the given edges. Lastly, it iterates through the table once more to update weights and discover 
+new ones. 

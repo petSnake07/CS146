@@ -1,1 +1,3 @@
-
+The method first represents the wells and pipes as an adjacency matrix. Then, it runs Prim's algorithm to determine the total cost
+of the minimum spanning tree by iterating through the matrix, using the greedy approach to choose the cheapest edges and updating
+when cheaper paths are discovered. Finally, it returns the total cost. 

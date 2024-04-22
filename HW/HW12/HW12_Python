@@ -1,1 +1,46 @@
+from typing import List
 
+class Wells:
+    def minCostToSupplyWater(self, n: int, wells: List[int], pipes: List[List[int]]) -> int:
+        graph = [[float('inf')] * (n + 1) for _ in range(n + 1)]
+
+        for i, cost in enumerate(wells):
+            graph[0][i + 1] = cost
+            graph[i + 1][0] = cost
+
+        for pipe in pipes:
+            house1, house2, cost = pipe
+            graph[house1][house2] = min(graph[house1][house2], cost)
+            graph[house2][house1] = min(graph[house2][house1], cost)
+
+        costs = [float('inf')] * (n + 1)
+        visited = [False] * (n + 1)
+        costs[0] = 0
+        total_cost = 0
+        
+        for _ in range(n + 1):
+            min_cost = float('inf')
+            min_node = -1
+
+            for j in range(n + 1):
+                if not visited[j] and costs[j] < min_cost:
+                    min_cost = costs[j]
+                    min_node = j
+            
+            if min_node == -1:
+                break
+            
+            visited[min_node] = True
+            total_cost += min_cost
+
+            for j in range(n + 1):
+                if not visited[j] and graph[min_node][j] != float('inf') and graph[min_node][j] < costs[j]:
+                    costs[j] = graph[min_node][j]
+        
+        return total_cost
+
+n = 2
+wells = [1, 1]
+pipes = [[1, 2, 1], [1, 2, 2]]
+test = Wells()
+print(test.minCostToSupplyWater(n, wells, pipes))

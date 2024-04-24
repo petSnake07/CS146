@@ -1,0 +1,63 @@
+package CoinChange;
+
+import java.util.*;
+
+public class CoinChange {
+    
+    public int coinChange(int[] coins, int amount) {
+        List<List<Integer>> combinations = new ArrayList<>();
+        
+        int min = coinChangeHelper(coins, amount, 0, Integer.MAX_VALUE, new ArrayList<>(), combinations);
+        
+        if (min == Integer.MAX_VALUE) {
+        	return -1;
+        }
+        
+        return min;
+    }
+    
+    private int coinChangeHelper(int[] coins, int amount, int index, int min, List<Integer> currentCombo, List<List<Integer>> combinations) {
+        if (amount == 0) {
+            combinations.add(new ArrayList<>(currentCombo));
+            
+            if (currentCombo.size() < min) {
+                min = currentCombo.size();
+            }
+            
+            return min;
+        }
+        
+        if (index == coins.length || amount < 0 || currentCombo.size() >= min) {
+            return min;
+        }
+        
+        min = coinChangeHelper(coins, amount, index + 1, min, currentCombo, combinations);
+        
+        currentCombo.add(coins[index]);
+        min = coinChangeHelper(coins, amount - coins[index], index, min, currentCombo, combinations);
+        currentCombo.remove(currentCombo.size() - 1);
+        
+        return min; 
+    }
+    
+    public static void main(String[] args) {
+    	CoinChange test = new CoinChange();
+    	
+    	int[] coins = {1, 2, 5};
+    	int amount = 11;
+    	
+    	System.out.println(test.coinChange(coins, amount));
+    	
+    	int[] coins2 = {2};
+    	int amount2 = 3;
+    	
+    	System.out.println(test.coinChange(coins2, amount2));
+    	
+    	int[] coins3 = {1};
+    	int amount3 = 0;
+    	
+    	System.out.println(test.coinChange(coins3, amount3));
+    	
+    	
+    }
+}

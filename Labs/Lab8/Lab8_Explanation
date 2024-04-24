@@ -1,0 +1,3 @@
+The method uses an almost brute force approach to discover most combinations that could satisfy the amount. It uses
+helper recursive method to discover nearly all possible combinations, but it will stop exploring the current combo if its size
+already exceeds the current min. 
